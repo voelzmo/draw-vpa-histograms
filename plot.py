@@ -27,12 +27,12 @@ lowestBucketFilled = int(list(memoryWeights.keys())[0])
 highestBucketFilled = 0
 for key in memoryWeights:
   w[int(key)] = memoryWeights[key]
-  highestBucketFilled = int(key)-1
+  highestBucketFilled = int(key)
 
 # plot:
 fig, ax = plt.subplots()
 
 # only draw the interesting range between 'lowestBucketFilled' and 'highestBucketFilled'
-ax.bar(xLabels[lowestBucketFilled:highestBucketFilled], w[lowestBucketFilled:highestBucketFilled])
+ax.bar(xLabels[lowestBucketFilled:highestBucketFilled+1], w[lowestBucketFilled:highestBucketFilled+1])
 plt.xticks(rotation = 45)
 plt.show()
