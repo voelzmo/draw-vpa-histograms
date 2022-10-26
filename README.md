@@ -44,11 +44,17 @@ but much easier to grasp what's going on by looking at a picture!
 # Usage
 This script expects the `bucketWeights` section of a VerticalPodAutoscalerCheckpoint object as input on `stdin`.
 ```
-$ kubectl get verticalpodautoscalercheckpoints.autoscaling.k8s.io my-vpa-checkpoint -o jsonpath={.status.memoryHistogram.bucketWeights} | python ./plot.py
+$ kubectl get verticalpodautoscalercheckpoints.autoscaling.k8s.io my-vpa-checkpoint -o jsonpath={.status.memoryHistogram.bucketWeights} | python ./plot.py --resource=memory
 ```
 
 And prints you a nice bar chart like this
 
 <img width="1067" alt="Screenshot 2022-05-27 at 17 03 26" src="https://user-images.githubusercontent.com/2256887/170726322-97010770-81cb-4987-a215-d91937f39791.png">
+
+CPU histograms now supported as well:
+```
+```
+$ kubectl get verticalpodautoscalercheckpoints.autoscaling.k8s.io my-vpa-checkpoint -o jsonpath={.status.cpuHistogram.bucketWeights} | python ./plot.py --resource=cpu
+```
 
 Note: the y-axis is still normalized, this means the values are not actual occurrences, but the highest bucket will always be listed as `10000`.
