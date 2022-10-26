@@ -28,16 +28,19 @@ def main(argv):
   startBucket = ''
   endBucket = ''
   resource_unit = ''
+  unit_factor = ''
   # setup bucket labels, so we know which buckets means which value
   if resource == 'memory':
     startBucket = MEMORY_START_BUCKET
     endBucket = MEMORY_END_BUCKET
     resource_unit = "MiB"
+    unit_factor = 1e6
   
   elif resource == "cpu":
     startBucket = CPU_START_BUCKET
     endBucket = CPU_END_BUCKET
     resource_unit = "mCores"
+    unit_factor = 1e-3
   
   i = 1
   b = startBucket
@@ -49,16 +52,17 @@ def main(argv):
   
   xLabels = []
   for bucket in outBuckets:
-      xLabels.append(f'{outBuckets[bucket]/1e6:.2f} {resource_unit}')
+      xLabels.append(f'{outBuckets[bucket]/unit_factor:.4f} {resource_unit}')
   
   # get bucketWeights data from stdin:
   bucketWeights = eval(''.join(sys.stdin.readlines()).strip("\n"))
-  
+  sortedBucketWeightKeys = sorted(bucketWeights, key=int)
+
   # create an array 'w' where w[bucketIndex] = heightOfBar
   w = [0] * outBuckets.__len__()
-  lowestBucketFilled = int(list(bucketWeights.keys())[0])
+  lowestBucketFilled = int(sortedBucketWeightKeys[0])
   highestBucketFilled = 0
-  for key in bucketWeights:
+  for key in sortedBucketWeightKeys:
     w[int(key)] = bucketWeights[key]
     highestBucketFilled = int(key)
   
