@@ -53,7 +53,6 @@ And prints you a nice bar chart like this
 
 CPU histograms now supported as well:
 ```
-```
 $ kubectl get verticalpodautoscalercheckpoints.autoscaling.k8s.io my-vpa-checkpoint -o jsonpath={.status.cpuHistogram.bucketWeights} | python ./plot.py --resource=cpu
 ```
 
