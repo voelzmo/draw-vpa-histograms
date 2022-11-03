@@ -50,7 +50,7 @@ def main(argv):
   ratio=1+BUCKET_GROW_FACTOR
   while b < endBucket:
       i += 1
-      b = (startBucket*(ratio**i)-1)/(ratio-1)
+      b = startBucket*((ratio**i)-1)/(ratio-1)
       outBuckets[i] = b
 
   xLabels = []
