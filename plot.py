@@ -42,14 +42,17 @@ def main(argv):
     resource_unit = "mCores"
     unit_factor = 1e-3
   
+  # calculate the bucket starting points according to https://github.com/kubernetes/autoscaler/blob/f3242d8485ab3d53a6ac3fbe430918408295a8cf/vertical-pod-autoscaler/pkg/recommender/util/histogram_options.go#L131-L134
   i = 1
   b = startBucket
   outBuckets = {}
+  outBuckets[1]=startBucket
+  ratio=1+BUCKET_GROW_FACTOR
   while b < endBucket:
-      outBuckets[i]=b
-      b = b*(1+BUCKET_GROW_FACTOR)
       i += 1
-  
+      b = (startBucket*(ratio**i)-1)/(ratio-1)
+      outBuckets[i] = b
+
   xLabels = []
   for bucket in outBuckets:
       xLabels.append(f'{outBuckets[bucket]/unit_factor:.4f} {resource_unit}')
