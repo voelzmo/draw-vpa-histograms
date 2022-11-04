@@ -4,7 +4,8 @@ Ever wondered what the values in a VerticalPodAutoscalerCheckpoint even mean?
 As a human it is hard to understand this
 
 ```json
-{"apiVersion": "autoscaling.k8s.io/v1",
+{
+"apiVersion": "autoscaling.k8s.io/v1",
 "kind": "VerticalPodAutoscalerCheckpoint",
 "metadata": {
   "creationTimestamp": "2020-07-24T02:08:41Z",
@@ -55,7 +56,7 @@ $ kubectl get verticalpodautoscalercheckpoints.autoscaling.k8s.io my-vpa-checkpo
 
 And prints you a nice bar chart like this
 
-<img width="1067" alt="Screenshot 2022-05-27 at 17 03 26" src="https://user-images.githubusercontent.com/2256887/170726322-97010770-81cb-4987-a215-d91937f39791.png">
+<img width="2118" alt="Screenshot 2022-11-04 at 09 54 45" src="https://user-images.githubusercontent.com/2256887/199932881-5322653a-1258-4d40-beae-f07d7899bb2c.png">
 
 CPU histograms now supported as well:
 ```
