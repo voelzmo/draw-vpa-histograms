@@ -3,41 +3,47 @@ Ever wondered what the values in a VerticalPodAutoscalerCheckpoint even mean?
 
 As a human it is hard to understand this
 
-```
-apiVersion: autoscaling.k8s.io/v1
-kind: VerticalPodAutoscalerCheckpoint
-metadata:
-  creationTimestamp: "2020-07-24T02:08:41Z"
-  name: my-vpa-checkpoint
-  namespace: default
-spec:
-  containerName: my-container
-  vpaObjectName: my-container-vpa
-status:
-   firstSampleStart: "2020-07-22T04:46:22Z"
-  lastSampleStart: "2022-05-27T15:11:24Z"
-  lastUpdateTime: "2022-05-27T15:11:47Z"
-  memoryHistogram:
-    bucketWeights:
-      "2": 38
-      "35": 1
-      "36": 1
-      "37": 2
-      "38": 55
-      "39": 704
-      "40": 3788
-      "41": 10000
-      "42": 5422
-      "43": 2923
-      "44": 402
-      "45": 32
-      "46": 5212
-      "47": 1
+```json
+{"apiVersion": "autoscaling.k8s.io/v1",
+"kind": "VerticalPodAutoscalerCheckpoint",
+"metadata": {
+  "creationTimestamp": "2020-07-24T02:08:41Z",
+  "name": "my-vpa-checkpoint",
+  "namespace": "default"
+},
+"spec": {
+  "containerName": "my-container",
+  "vpaObjectName": "my-container-vpa"
+},
+"status": {
+   "firstSampleStart": "2020-07-22T04:46:22Z",
+  "lastSampleStart": "2022-05-27T15:11:24Z",
+  "lastUpdateTime": "2022-05-27T15:11:47Z",
+  "memoryHistogram": {
+    "bucketWeights": {
+      "2": 38,
+      "35": 1,
+      "36": 1,
+      "37": 2,
+      "38": 55,
+      "39": 704,
+      "40": 3788,
+      "41": 10000,
+      "42": 5422,
+      "43": 2923,
+      "44": 402,
+      "45": 32,
+      "46": 5212,
+      "47": 1,
       "48": 7
-    referenceTimestamp: "2022-05-28T00:00:00Z"
-    totalWeight: 6.673685189638553
-  totalSamplesCount: 650223
-  version: v3
+    },
+    "referenceTimestamp": "2022-05-28T00:00:00Z",
+    "totalWeight": 6.673685189638553
+  },
+  "totalSamplesCount": 650223,
+  "version": "v3"
+}
+}
 ```
 but much easier to grasp what's going on by looking at a picture!
 
