@@ -64,3 +64,7 @@ $ kubectl get verticalpodautoscalercheckpoints.autoscaling.k8s.io my-vpa-checkpo
 ```
 
 Note: the y-axis is still normalized, this means the values are not actual occurrences, but the highest bucket will always be listed as `10000`.
+
+# Requirements
+
+This script requires python 3 and `matplotlib` installed.
