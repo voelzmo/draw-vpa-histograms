@@ -40,7 +40,7 @@ def main(argv):
     startBucket = CPU_START_BUCKET
     endBucket = CPU_END_BUCKET
     resource_unit = "mCores"
-    unit_factor = 1e-3
+    unit_factor = 1e-2
   
   # calculate the bucket starting points according to https://github.com/kubernetes/autoscaler/blob/f3242d8485ab3d53a6ac3fbe430918408295a8cf/vertical-pod-autoscaler/pkg/recommender/util/histogram_options.go#L131-L134
   i = 1
